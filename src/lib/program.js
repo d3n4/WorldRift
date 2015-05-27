@@ -20,7 +20,7 @@
     spl_autoload_register(function() {
         var src = this[0].value.replace(/\\/g, '/') + '.phps';
         var resumable = phpEngine.state.getResumable();
-        phpEngine.execute('<?php include "'+src+'";').done(function(native) {
+        phpEngine.execute('<?php include "'+src+'"; ?>').done(function(native) {
             pause.resume();
         }).fail(function() {
             pause.resume();
@@ -45,7 +45,7 @@
         console.error(data);
     });
 
-    phpEngine.execute('<?php include "WorldRift/Program.phps";', 'program').done(function(){
+    phpEngine.execute('<?php include "WorldRift/Program.phps"; ?>', 'program').done(function(){
     }).fail(function(e){
         console.error(e);   
     });
